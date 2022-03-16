@@ -1,0 +1,26 @@
+# Ignore compiled SML files and related binaries
+*.cm
+*.uo
+*.ui
+
+# Ignore Bascinet specific files
+.bascinet/
+.bascinet-settings
+.bascinet-history
+.bascinet-cache/
+
+# Ignore temporary files created by editors
+*.swp
+*.swo
+*~
+*.bak
+
+# Ignore MacOS specific files
+.DS_Store
+
+# Ignore Windows specific files
+Thumbs.db
+desktop.ini
+
+# Ignore backup files
+*.backup
