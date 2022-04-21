@@ -1,0 +1,87 @@
+USE_LR_PARSER
+
+(* Start Symbol *)
+statementList
+
+(* ============================================================== *)
+(* Statements													  *)
+(* ============================================================== *)
+
+<statementList> 	::= <statement> <statementList>
+					  |	<epsilon>	.
+
+<statement>             ::= <singleStatement> ";"
+					  | <blockStatement>    .
+<singleStatement>	::=                 <declaration>
+					  | <assignment>
+					  | <out>
+					  | <prefix>
+					  | <postfix>
+					  | <skip>		.
+
+<blockStatement>        ::=  <conditional> | <iterative> | <block> .
+(* ============================================================== *)
+(* Declarations													  *)
+(* ============================================================== *)
+
+<declaration>		::= <type> id 
+                        | <type> id "=" <expression>                          .
+<assignment>		::= id "=" <expression>                     .
+<prefix>		::= <incrementDecrementOperator> id         .
+<postfix>		::= id <incrementDecrementOperator>         .
+<out>			::= "print" "(" <expression> ")"            .
+<skip>			::= <epsilon>          			.
+
+(* ============================================================== *)
+(* Blocks and Iterative                                           *)
+(* ============================================================== *)
+
+<conditional>		::= <ifThen> | <ifThenElse>                     .
+<iterative>		::= <whileLoop>
+                                     | <forLoop>			.
+<block>			::= "{" <statementList> "}"                     .
+
+<ifThen>		::= "if" "(" <expression> ")" "then" <block>	.
+<ifThenElse>		::= "if" "(" <expression> ")" "then" <block> "else" <block> .
+
+<whileLoop>		::= "while" "(" <expression> ")" <block> .
+<forLoop>               ::= "for" "(" <forInitial> ";" <expression> ";" <forUpdate> ")" <block>		.
+<forInitial>		::= "int" id "=" <expression>					.
+<forUpdate>		::= <prefix> | <postfix>									.
+
+(* ============================================================== *)
+(* Expressions							  *)
+(* ============================================================== *)
+
+<expression>		::= <logicalOr>									.
+<logicalOr>		::= <logicalOr> "or" <logicalAnd>
+					  | <logicalAnd>								.
+<logicalAnd>		::= <logicalAnd> "and" <equality>
+					  | <equality>									.
+<equality>		::= <equality> <equalityOperator> <relation>
+					  |	<relation>									.
+<relation>		::= <relation> <relationOperator> <additive>
+					  | <additive>									.
+<additive>		::= <additive> <additiveOperator> <multiplicative>
+					  | <multiplicative>							.
+<multiplicative>	::= <multiplicative> <multiplicativeOperator> <unary> | <unary>	.
+<unary>			::= "-" <unary> | "!" <unary> | <exponent>   .
+<exponent>		::= <factor> "^" <exponent> | <factor>      .
+<factor>		::= "(" <expression> ")"
+					  | "|" <expression> "|"
+					  | <prefix>
+					  | <postfix>
+                                          | integer
+                                          | boolean
+                                          | id                   .         
+(* ============================================================== *)
+(* Operators and Types						  *)
+(* ============================================================== *)
+
+<type>				::= "int" | "bool"     			.
+<epsilon> 			::=					.
+<multiplicativeOperator>	::= "*" | "/" | "%"			.
+<equalityOperator>              ::=	"==" | "!="			.
+<additiveOperator>              ::=     "+" | "-"                       .
+<relationOperator>              ::=	"<"	| ">"                   .
+<incrementDecrementOperator>	::=	"++" | "--"                     .
