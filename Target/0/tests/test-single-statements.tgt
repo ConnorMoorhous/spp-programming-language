@@ -1,0 +1,22 @@
+int x;
+bool y;
+x = 4;
+y = false;
+int z = 1+1;
+int t = x;
+int r = z;;
+
+; ; ; ; ;
+
+;
+
+;
+;
+
+
+
+t++;
+print(t);
+--r;
+print(r);
+

@@ -1,0 +1,74 @@
+int x = 1;
+int y = 13;
+int z = -5;
+
+print(++x);
+print(--x);
+print(y++);
+print(y);
+print(z--);
+print(z);
+print(|z|);
+print(|2|);
+print(|-2|);
+
+print(2^2);
+print(-2^2);
+print((-3)^2);
+print((-3)^3);
+
+print(!true);
+print(!false);
+
+x = 6;
+y = 2;
+print(6*2);
+print(x*2);
+print(x*y);
+print(6/2);
+print(x/2);
+print(x/y);
+print(6%2);
+print(x%2);
+print(x%y);
+print(7/4);
+print(7%4);
+
+print(6+2);
+print(x+2);
+print(x+y);
+print(6-2);
+print(x-2);
+print(x-y);
+
+print(6<2);
+print(x<2);
+print(x<y);
+print(6>2);
+print(x>2);
+print(x>y);
+print(1<1);
+print(1>1);
+
+print(1==1);
+print(6==2);
+print(x==2);
+print(x==y);
+print(true == true);
+print(true == false);
+print(1!=1);
+print(6!=2);
+print(x!=2);
+print(x!=y);
+print(true != true);
+print(true != false);
+
+print(true and true);
+print(true and false);
+print(false and true);
+print(false and false);
+
+print(true or true);
+print(true or false);
+print(false or true);
+print(false or false);
